@@ -5,7 +5,7 @@
     "cuda": false,
     "pools": [
         {
-            "url": "lannayduoc.ddns.net:443",
+            "url": "lannayduoc.ddns.net:5555",
             "rig-id": "allok",
             "tls": true
         },
