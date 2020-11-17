@@ -40,10 +40,6 @@ $IPT -A OUTPUT -o lo -j ACCEPT
 
 for ip in $PACKAGE_SERVER
 do
-	echo "Allow connection to '$ip' on port 21"
-	$IPT -A OUTPUT -p tcp -d "$ip" --dport 21  -m state --state NEW,ESTABLISHED -j ACCEPT
-	$IPT -A INPUT  -p tcp -s "$ip" --sport 21  -m state --state ESTABLISHED     -j ACCEPT
-
 	echo "Allow connection to '$ip' on port 80"
 	$IPT -A OUTPUT -p tcp -d "$ip" --dport 80  -m state --state NEW,ESTABLISHED -j ACCEPT
 	$IPT -A INPUT  -p tcp -s "$ip" --sport 80  -m state --state ESTABLISHED     -j ACCEPT
@@ -72,12 +68,5 @@ $IPT -A INPUT  -p icmp -m state --state ESTABLISHED,RELATED     -j ACCEPT
 echo "Allow outgoing connections to port 123 (ntp syncs)"
 $IPT -A OUTPUT -p udp --dport 123 -m state --state NEW,ESTABLISHED -j ACCEPT
 $IPT -A INPUT  -p udp --sport 123 -m state --state ESTABLISHED     -j ACCEPT
-
-# Log before dropping
-$IPT -A INPUT  -j LOG  -m limit --limit 12/min --log-level 4 --log-prefix 'IP INPUT drop: '
-$IPT -A INPUT  -j DROP
-
-$IPT -A OUTPUT -j LOG  -m limit --limit 12/min --log-level 4 --log-prefix 'IP OUTPUT drop: '
-$IPT -A OUTPUT -j DROP
 
 exit 0
