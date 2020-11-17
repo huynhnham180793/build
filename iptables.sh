@@ -34,10 +34,6 @@ do
 	$IPT -A INPUT  -p tcp -s $ip --sport 53 -m state --state ESTABLISHED     -j ACCEPT
 done
 
-echo "allow all and everything on localhost"
-$IPT -A INPUT -i lo -j ACCEPT
-$IPT -A OUTPUT -o lo -j ACCEPT
-
 for ip in $PACKAGE_SERVER
 do
 	echo "Allow connection to '$ip' on port 21"
